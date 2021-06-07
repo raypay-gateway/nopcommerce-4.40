@@ -1,0 +1,52 @@
+﻿@model Nop.Plugin.Payments.RayPay.Models.ConfigurationModel
+@inject Nop.Core.IWebHelper webHelper
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+
+<form asp-controller="PaymentRayPay" asp-action="Configure" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.Raw(T("Plugins.Payments.RayPay.Instructions", $"{webHelper.GetStoreLocation()}Plugins/PaymentRayPay/PDTHandler"))
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Redirect_OverrideForStore" asp-input="Redirect" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Redirect" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Redirect" />
+                        <span asp-validation-for="Redirect"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="UserID_OverrideForStore" asp-input="UserID" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="UserID" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="UserID" />
+                        <span asp-validation-for="UserID"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AcceptorCode_OverrideForStore" asp-input="AcceptorCode" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AcceptorCode" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AcceptorCode" />
+                        <span asp-validation-for="AcceptorCode"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <input type="submit" name="save" class="btn bg-primary" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
