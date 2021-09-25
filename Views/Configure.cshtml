@@ -11,6 +11,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 @Html.Raw(T("Plugins.Payments.RayPay.Instructions", $"{webHelper.GetStoreLocation()}Plugins/PaymentRayPay/PDTHandler"))
+
                 <div class="form-group">
                     <div class="col-md-3">
                         <nop-override-store-checkbox asp-for="UserID_OverrideForStore" asp-input="UserID" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
@@ -23,12 +24,22 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-3">
-                        <nop-override-store-checkbox asp-for="AcceptorCode_OverrideForStore" asp-input="AcceptorCode" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
-                        <nop-label asp-for="AcceptorCode" />
+                        <nop-override-store-checkbox asp-for="MarketingID_OverrideForStore" asp-input="MarketingID" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="MarketingID" />
                     </div>
                     <div class="col-md-9">
-                        <nop-editor asp-for="AcceptorCode" />
-                        <span asp-validation-for="AcceptorCode"></span>
+                        <nop-editor asp-for="MarketingID" />
+                        <span asp-validation-for="MarketingID"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="EnableSandBox_OverrideForStore" asp-input="EnableSandBox" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="EnableSandBox" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="EnableSandBox" />
+                        <span asp-validation-for="EnableSandBox"></span>
                     </div>
                 </div>
                 <div class="form-group">
